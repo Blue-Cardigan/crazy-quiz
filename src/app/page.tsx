@@ -1,103 +1,218 @@
-import Image from "next/image";
+import Link from 'next/link'
+import { ArrowRight, CheckCircle, Users, Zap, Trophy, Terminal, Database, Search, FileText, Cpu, Shield } from 'lucide-react'
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Hero Section with ASCII Art and Terminal Aesthetic */}
+      <section className="relative py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Main Content */}
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <div className="text-accent-primary font-mono text-sm tracking-widest uppercase">
+                  [ QUIZ ARCHIVE SYSTEM INITIALIZED ]
+                </div>
+                <h1 className="archive-header text-6xl lg:text-8xl text-accent-primary text-glow-strong leading-none">
+                  DATA
+                  <br />
+                  <span className="text-accent-tertiary glitch">RETRIEVAL</span>
+                  <br />
+                  <span className="text-accent-secondary">PROTOCOL</span>
+                </h1>
+                <div className="space-y-3 text-text-dim font-mono text-lg">
+                  <p className="data-point">Terminal-based quiz archival system</p>
+                  <p className="data-point">Real-time knowledge verification protocols</p>
+                  <p className="data-point">Distributed learning network access</p>
+                </div>
+              </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/quizzes"
+                  className="btn-terminal flex items-center justify-center space-x-3 text-lg py-4 px-8"
+                >
+                  <Search className="h-5 w-5" />
+                  <span>Browse Archive</span>
+                  <ArrowRight className="h-5 w-5" />
+                </Link>
+                <Link
+                  href="/auth/signup"
+                  className="btn-secondary flex items-center justify-center space-x-3 text-lg py-4 px-8"
+                >
+                  <Terminal className="h-5 w-5" />
+                  <span>Access Terminal</span>
+                </Link>
+              </div>
+
+              {/* System Stats */}
+              <div className="grid grid-cols-3 gap-6 pt-8 border-t border-neutral-light">
+                <div className="text-center">
+                  <div className="text-3xl font-mono text-accent-primary text-glow">127</div>
+                  <div className="text-xs text-text-dim font-mono uppercase tracking-wide">Active Nodes</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-mono text-accent-tertiary text-glow">2.4K</div>
+                  <div className="text-xs text-text-dim font-mono uppercase tracking-wide">Archive Entries</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-mono text-accent-secondary text-glow">98.7%</div>
+                  <div className="text-xs text-text-dim font-mono uppercase tracking-wide">System Uptime</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column - ASCII Art Terminal */}
+            <div className="archive-card p-4 font-mono text-xs max-w-md">
+              <div className="flex items-center justify-between mb-2">
+                <div className="text-accent-primary text-sm">QUIZ.SYS/TERMINAL</div>
+                <div className="flex space-x-1">
+                  <div className="w-2 h-2 rounded-full bg-danger"></div>
+                  <div className="w-2 h-2 rounded-full bg-warning"></div>
+                  <div className="w-2 h-2 rounded-full bg-accent-primary"></div>
+                </div>
+              </div>
+              <div className="text-text-dim space-y-1">
+                <div>{'>'} STATUS: <span className="text-accent-primary">ONLINE</span></div>
+                <div>{'>'} LOADING DATABASE...</div>
+                <div className="text-accent-primary">{'>'} ████████████ 100%</div>
+                <div>{'>'} NODES: <span className="text-accent-tertiary">127</span></div>
+                <div>{'>'} MEM: <span className="text-warning">2.4GB</span></div>
+                <div>{'>'} BACKUP: <span className="text-accent-primary">42m</span></div>
+                <div>&nbsp;</div>
+                <div className="text-accent-primary">
+                  {'>'} READY_<span className="animate-pulse">█</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Features Grid - Archival System Modules */}
+      <section className="py-20 px-6 bg-gradient-to-b from-transparent to-neutral-dark/50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="text-accent-primary font-mono text-sm tracking-widest uppercase mb-4">
+              [ SYSTEM MODULES ]
+            </div>
+            <h2 className="archive-header text-4xl lg:text-6xl text-accent-primary text-glow mb-6">
+              ARCHIVE PROTOCOLS
+            </h2>
+            <p className="text-text-dim font-mono text-lg max-w-3xl mx-auto">
+              Advanced knowledge management system with distributed verification protocols
+              and real-time data synchronization across secure network nodes.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Database,
+                title: "Data Archival",
+                description: "Secure storage protocols with encrypted knowledge databases and redundant backup systems.",
+                color: "accent-primary"
+              },
+              {
+                icon: Cpu,
+                title: "Query Processing",
+                description: "High-performance search algorithms with intelligent content matching and relevance scoring.",
+                color: "accent-tertiary"
+              },
+              {
+                icon: Shield,
+                title: "Access Control",
+                description: "Multi-layer authentication system with role-based permissions and audit trail logging.",
+                color: "accent-secondary"
+              },
+              {
+                icon: Users,
+                title: "Network Nodes",
+                description: "Distributed user network with peer-to-peer knowledge sharing and collaborative verification.",
+                color: "warning"
+              },
+              {
+                icon: Zap,
+                title: "Real-time Sync",
+                description: "Instant data propagation across network nodes with conflict resolution algorithms.",
+                color: "accent-primary"
+              },
+              {
+                icon: FileText,
+                title: "Report Generation",
+                description: "Automated analytics and performance metrics with exportable data visualization.",
+                color: "accent-tertiary"
+              }
+            ].map((feature, index) => (
+              <div key={index} className="archive-card p-6 group">
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className={`p-3 rounded border border-${feature.color} text-${feature.color}`}>
+                    <feature.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="font-mono text-lg uppercase tracking-wide text-accent-primary">
+                    {feature.title}
+                  </h3>
+                </div>
+                <p className="text-text-dim font-mono text-sm leading-relaxed">
+                  {feature.description}
+                </p>
+                <div className="mt-4 text-xs font-mono text-accent-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                  MODULE STATUS: ACTIVE
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section - Terminal Access */}
+      <section className="py-20 px-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-accent-primary/10 to-accent-secondary/10"></div>
+        <div className="max-w-4xl mx-auto text-center relative">
+          <div className="space-y-8">
+            <div>
+              <div className="text-accent-primary font-mono text-sm tracking-widest uppercase mb-4">
+                [ SYSTEM ACCESS REQUEST ]
+              </div>
+              <h2 className="archive-header text-4xl lg:text-6xl text-accent-primary text-glow-strong mb-6">
+                INITIALIZE
+                <br />
+                <span className="text-accent-secondary">CONNECTION</span>
+              </h2>
+              <p className="text-text-dim font-mono text-lg max-w-2xl mx-auto">
+                Begin your journey into the knowledge archive. Access terminal interface
+                and contribute to the distributed learning network.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <Link
+                href="/auth/signup"
+                className="btn-terminal flex items-center justify-center space-x-3 text-xl py-6 px-12"
+              >
+                <Terminal className="h-6 w-6" />
+                <span>Request Access</span>
+              </Link>
+              <Link
+                href="/quizzes"
+                className="btn-secondary flex items-center justify-center space-x-3 text-xl py-6 px-12"
+              >
+                <Database className="h-6 w-6" />
+                <span>Browse Archive</span>
+              </Link>
+            </div>
+
+            {/* Terminal Prompt */}
+            <div className="archive-card p-6 text-left font-mono text-sm max-w-2xl mx-auto">
+              <div className="text-accent-primary mb-2">$ quiz-sys --init-session</div>
+              <div className="text-text-dim">Initializing secure connection...</div>
+              <div className="text-text-dim">Loading user authentication protocols...</div>
+              <div className="text-accent-primary">Ready for input_<span className="animate-pulse">█</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  );
+  )
 }
