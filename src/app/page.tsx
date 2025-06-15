@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, CheckCircle, Users, Zap, Trophy, Terminal, Database, Search, FileText, Cpu, Shield } from 'lucide-react'
+import { ArrowRight, Users, Zap, Terminal, Database, Search, FileText, Cpu, Shield } from 'lucide-react'
 
 export default function Home() {
   return (
@@ -7,9 +7,33 @@ export default function Home() {
       {/* Hero Section with ASCII Art and Terminal Aesthetic */}
       <section className="relative py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Main Content */}
-            <div className="space-y-8">
+          <div className="relative">
+            {/* Terminal Card - Top Right */}
+            <div className="absolute top-0 right-0 z-10 archive-card p-4 font-mono text-xs w-80">
+              <div className="flex items-center justify-between mb-2">
+                <div className="text-accent-primary text-sm">QUIZ.SYS/TERMINAL</div>
+                <div className="flex space-x-1">
+                  <div className="w-2 h-2 rounded-full bg-danger"></div>
+                  <div className="w-2 h-2 rounded-full bg-warning"></div>
+                  <div className="w-2 h-2 rounded-full bg-accent-primary"></div>
+                </div>
+              </div>
+              <div className="text-text-dim space-y-1">
+                <div>{'>'} STATUS: <span className="text-accent-primary">ONLINE</span></div>
+                <div>{'>'} LOADING DATABASE...</div>
+                <div className="text-accent-primary">{'>'} ████████████ 100%</div>
+                <div>{'>'} NODES: <span className="text-accent-tertiary">127</span></div>
+                <div>{'>'} MEM: <span className="text-warning">2.4GB</span></div>
+                <div>{'>'} BACKUP: <span className="text-accent-primary">42m</span></div>
+                <div>&nbsp;</div>
+                <div className="text-accent-primary">
+                  {'>'} READY_<span className="animate-pulse">█</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Main Content */}
+            <div className="space-y-8 pr-0 lg:pr-96">
               <div className="space-y-4">
                 <div className="text-accent-primary font-mono text-sm tracking-widest uppercase">
                   [ QUIZ ARCHIVE SYSTEM INITIALIZED ]
@@ -59,30 +83,6 @@ export default function Home() {
                 <div className="text-center">
                   <div className="text-3xl font-mono text-accent-secondary text-glow">98.7%</div>
                   <div className="text-xs text-text-dim font-mono uppercase tracking-wide">System Uptime</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column - ASCII Art Terminal */}
-            <div className="archive-card p-4 font-mono text-xs max-w-md">
-              <div className="flex items-center justify-between mb-2">
-                <div className="text-accent-primary text-sm">QUIZ.SYS/TERMINAL</div>
-                <div className="flex space-x-1">
-                  <div className="w-2 h-2 rounded-full bg-danger"></div>
-                  <div className="w-2 h-2 rounded-full bg-warning"></div>
-                  <div className="w-2 h-2 rounded-full bg-accent-primary"></div>
-                </div>
-              </div>
-              <div className="text-text-dim space-y-1">
-                <div>{'>'} STATUS: <span className="text-accent-primary">ONLINE</span></div>
-                <div>{'>'} LOADING DATABASE...</div>
-                <div className="text-accent-primary">{'>'} ████████████ 100%</div>
-                <div>{'>'} NODES: <span className="text-accent-tertiary">127</span></div>
-                <div>{'>'} MEM: <span className="text-warning">2.4GB</span></div>
-                <div>{'>'} BACKUP: <span className="text-accent-primary">42m</span></div>
-                <div>&nbsp;</div>
-                <div className="text-accent-primary">
-                  {'>'} READY_<span className="animate-pulse">█</span>
                 </div>
               </div>
             </div>

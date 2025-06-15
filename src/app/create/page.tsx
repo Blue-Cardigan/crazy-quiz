@@ -127,7 +127,13 @@ export default function CreateQuiz() {
     }))
   }
 
-  const handleGeneratedQuestions = (generatedQuestions: any[]) => {
+  interface GeneratedQuestion {
+    text: string
+    type: QuestionType
+    answers: Answer[]
+  }
+
+  const handleGeneratedQuestions = (generatedQuestions: GeneratedQuestion[]) => {
     const newQuestions: Question[] = generatedQuestions.map(gq => ({
       id: Math.random().toString(36).substr(2, 9),
       text: gq.text,

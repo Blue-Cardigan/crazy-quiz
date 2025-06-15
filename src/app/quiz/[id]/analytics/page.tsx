@@ -3,7 +3,6 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { User } from '@supabase/supabase-js'
 import { supabase } from '@/lib/supabase'
 import { getCurrentUser } from '@/lib/auth'
 import { Database } from '@/lib/database.types'
@@ -60,7 +59,6 @@ export default function QuizAnalytics() {
   const [quiz, setQuiz] = useState<QuizWithQuestions | null>(null)
   const [analytics, setAnalytics] = useState<QuizAnalytics | null>(null)
   const [loading, setLoading] = useState(true)
-  const [user, setUser] = useState<User | null>(null)
 
   const fetchQuizAnalytics = useCallback(async () => {
     // Fetch quiz details
@@ -88,8 +86,6 @@ export default function QuizAnalytics() {
       router.push('/dashboard')
       return
     }
-
-    setUser(currentUser)
 
     if (quizData) {
       // Sort questions and answers
@@ -127,17 +123,17 @@ export default function QuizAnalytics() {
       // Calculate question-level analytics
       const questionAnalytics: QuestionAnalytics[] = sortedQuestions.map((question: QuestionWithOptions) => {
         const questionResponses = responsesData?.flatMap(r => 
-          r.question_responses?.filter(qr => qr.question_id === question.id) || []
+          r.question_responses?.filter((qr: QuestionResponse) => qr.question_id === question.id) || []
         ) || []
 
         const totalResponses = questionResponses.length
-        const correctResponses = questionResponses.filter(qr => qr.is_correct).length
+        const correctResponses = questionResponses.filter((qr: QuestionResponse) => qr.is_correct).length
         const incorrectResponses = totalResponses - correctResponses
         const accuracyRate = totalResponses > 0 ? (correctResponses / totalResponses) * 100 : 0
 
         // Count responses by answer
         const responses: { [key: string]: number } = {}
-        questionResponses.forEach(qr => {
+        questionResponses.forEach((qr: QuestionResponse) => {
           const answer = qr.selected_answer || 'No answer'
           responses[answer] = (responses[answer] || 0) + 1
         })

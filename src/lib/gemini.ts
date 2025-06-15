@@ -63,6 +63,10 @@ Example format:
       contents: prompt,
     });
     
+    if (!response.text) {
+      throw new Error('No response text received from Gemini');
+    }
+    
     // Parse JSON response
     const cleanedResponse = response.text.replace(/```json\n?|\n?```/g, '').trim();
     const questions = JSON.parse(cleanedResponse);
